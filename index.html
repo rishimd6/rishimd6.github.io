@@ -217,6 +217,33 @@
             margin-bottom: 0;
         }
 
+        /* Author line on preprint cards */
+        .entry .authors {
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Resource tag links ([arXiv], [slides], [code]) */
+        .res-links {
+            white-space: nowrap;
+        }
+
+        .content .res-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-style: normal;
+            color: var(--accent);
+            border-bottom: none;
+            margin-left: 0.35rem;
+        }
+
+        .content .res-links a:hover {
+            color: var(--accent-hover);
+            border-bottom: none;
+            text-decoration: underline;
+        }
+
         /* --- Coursework / Teaching Grid --- */
         .course-level {
             font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -371,7 +398,7 @@
             <div class="nav-brand">Rishi Dadlani</div>
             <ul>
                 <li><a href="#" class="tab-link active" onclick="openTab(event, 'about')">About</a></li>
-                <li><a href="#" class="tab-link" onclick="openTab(event, 'teaching')">Teaching & Talks</a></li>
+                <li><a href="#" class="tab-link" onclick="openTab(event, 'teaching')">Teaching &amp; Talks</a></li>
                 <li><a href="#" class="tab-link" onclick="openTab(event, 'coursework')">Coursework</a></li>
                 <li><a href="cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
             </ul>
@@ -394,6 +421,22 @@
                 
                 <div class="image-container">
                     <img src="image.png" alt="Rishi Dadlani">
+                </div>
+            </div>
+
+            <!-- Preprints Section -->
+            <div class="content full-width">
+                <h1>Preprints</h1>
+
+                <div class="entry card">
+                    <h2>Classification of dynamics for a two person model of planned behavior</h2>
+                    <p class="authors"><strong>Rishi Dadlani</strong>, John S. McAlister, Tahra L. Eissa, and Nina H. Fefferman</p>
+                    <p class="date">Preprint, 2026 &middot; math.DS <span class="res-links"><a href="https://arxiv.org/abs/2601.11804" target="_blank" rel="noopener noreferrer">[arXiv]</a></span></p>
+                </div>
+
+                <div class="entry card">
+                    <h2>Exponential DLPP Conditioned on Upper Deviation Event</h2>
+                    <p class="date">Preprint in preparation, 2026</p>
                 </div>
             </div>
 
@@ -423,8 +466,8 @@
                 
                 <p class="course-level"><strong>Teaching Assistantships</strong></p>
                 <ul class="course-list single-column">
-                    <li>EAS 5160 (Math for Machine Learning: Probability) &ndash; University of Pennsylvania (Spring-Fall 2026)</li>
-                    <li>EAS 5170 (Math for Machine Learning: Linear Algebra) &ndash; University of Pennsylvania (Spring-Fall 2026)</li>
+                    <li>EAS 5160 (Math for Machine Learning: Probability) &ndash; University of Pennsylvania (Spring&ndash;Fall 2026)</li>
+                    <li>EAS 5170 (Math for Machine Learning: Linear Algebra) &ndash; University of Pennsylvania (Spring&ndash;Fall 2026)</li>
                     <li>ESE 3010 (Engineering Probability) &ndash; University of Pennsylvania (Spring 2026)</li>
                 </ul>
 
@@ -436,11 +479,11 @@
                 <p class="course-level"><strong>Presentations</strong></p>
                 <ul class="course-list single-column">
                     <li>Exponential DLPP Conditioned on Upper Large Deviation &ndash; Ohio State Young Mathematicians Conference (YMC) and University of Michigan REU (July 2026)</li>
-                    <li>Numerical Methods Applied to Radiation Transport Equation &ndash; Texas A&M PDE Summer Program (May 2026)</li>
-                    <li>Classification of Dynamics for a Model of Planned Behavior &ndash; Johns Hopkins MATRX (March 2026)</li>
+                    <li>Numerical Methods Applied to Radiation Transport Equation &ndash; Texas A&amp;M PDE Summer Program (May 2026) <span class="res-links"><a href="https://drive.google.com/file/d/1fcqzjCFWgBhYLkzvsBdh2CFWXDFU3pma/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a><a href="https://github.com/rishimd6/radiation-transport" target="_blank" rel="noopener noreferrer">[code]</a></span></li>
+                    <li>Classification of Dynamics for a Model of Planned Behavior &ndash; Johns Hopkins MATRX (March 2026) <span class="res-links"><a href="https://drive.google.com/file/d/1q9VPLienLPUeJgJIJDFiOc8uFlONLwRJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
                     <li>Topological Mixing and Transitivity, Ergodicity, Circle Dynamics &ndash; Dynamical Systems Seminar, University of Pennsylvania (September&ndash;December 2024)</li>
-                    <li>Functional Analysis &ndash; Directed Reading Program (December 2024)</li>
-                    <li>Lie Groups and Lie Algebras &ndash; Differential Geometry Course Final Presentation (May 2024)</li>
+                    <li>Functional Analysis &ndash; Directed Reading Program (December 2024) <span class="res-links"><a href="https://drive.google.com/file/d/1viTZOhXHL_bdoc10wyKhaGE-bHNaCKEb/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
+                    <li>Lie Groups and Lie Algebras &ndash; Differential Geometry Course Final Presentation (May 2024) <span class="res-links"><a href="https://drive.google.com/file/d/1vP28z8sLhl7MYn4-n-0BP3TtZ6X1e6pJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
                 </ul>
             </div>
         </div>
@@ -452,46 +495,46 @@
                 
                 <p class="course-level"><strong>Undergraduate Level</strong></p>
                 <ul class="course-list">
-                    <li>MATH 3140 (Advanced Linear Algebra) - Prof. Angela Gibney</li>
-                    <li>MATH 4100 (Complex Analysis) - Prof. Jim Haglund</li>
-                    <li>CIS 1600 (Combinatorics and Graph Theory) - Prof. Rajiv Gandhi</li>
-                    <li>CIS 1210 (Data Structures and Algorithms) - Prof. Rajiv Gandhi</li>
-                    <li>CIS 2620 (Automata and Complexity Theory) - Prof. Rajeev Alur</li>
-                    <li>ESE 3010 (Probability and Statistics) - Prof. Santosh Venkatesh</li>
+                    <li>MATH 3140 (Advanced Linear Algebra) &ndash; Prof. Angela Gibney</li>
+                    <li>MATH 4100 (Complex Analysis) &ndash; Prof. Jim Haglund</li>
+                    <li>CIS 1600 (Combinatorics and Graph Theory) &ndash; Prof. Rajiv Gandhi</li>
+                    <li>CIS 1210 (Data Structures and Algorithms) &ndash; Prof. Rajiv Gandhi</li>
+                    <li>CIS 2620 (Automata and Complexity Theory) &ndash; Prof. Rajeev Alur</li>
+                    <li>ESE 3010 (Probability and Statistics) &ndash; Prof. Santosh Venkatesh</li>
                 </ul>    
                 
                 <p class="course-level"><strong>Master's Level</strong></p>
                 <ul class="course-list">
-                    <li>MATH 5000 (Point-Set Topology) - Prof. Dennis DeTurck</li>
-                    <li>MATH 5010 (Differential Geometry) - Prof. Dennis DeTurck</li>
-                    <li>MATH 5020 (Group Theory and Ring Theory) - Prof. Ted Chinburg</li>
-                    <li>MATH 5030 (Modules, Fields, Galois Theory) - Prof. Ted Chinburg</li>
+                    <li>MATH 5000 (Point-Set Topology) &ndash; Prof. Dennis DeTurck</li>
+                    <li>MATH 5010 (Differential Geometry) &ndash; Prof. Dennis DeTurck</li>
+                    <li>MATH 5020 (Group Theory and Ring Theory) &ndash; Prof. Ted Chinburg</li>
+                    <li>MATH 5030 (Modules, Fields, Galois Theory) &ndash; Prof. Ted Chinburg</li>
                 </ul>
                 
                 <p class="course-level"><strong>PhD Level</strong></p>
                 <ul class="course-list">
-                    <li>MATH 6000 (Smooth Manifolds) - Prof. Herman Gluck</li>
-                    <li>MATH 6010 (Algebraic Topology) - Prof. Wolfgang Ziller</li>
-                    <li>MATH 6080 (Measure Theory and Complex Analysis) - Prof. Ryan Hynd</li>
-                    <li>MATH 6090 (Measure Theory and Functional Analysis) - Prof. Phil Gressman</li>
-                    <li>MATH 6440 (PDE I) - Prof. Ryan Hynd</li>
-                    <li>MATH 6450 (PDE II) - Prof. Ryan Hynd</li>
-                    <li>MATH 6480 (Probability Theory) - Prof. Jiaoyang Huang</li>
-                    <li>MATH 6600 (Riemannian Geometry) - Prof. Wolfgang Ziller</li>
+                    <li>MATH 6000 (Smooth Manifolds) &ndash; Prof. Herman Gluck</li>
+                    <li>MATH 6010 (Algebraic Topology) &ndash; Prof. Wolfgang Ziller</li>
+                    <li>MATH 6080 (Measure Theory and Complex Analysis) &ndash; Prof. Ryan Hynd</li>
+                    <li>MATH 6090 (Measure Theory and Functional Analysis) &ndash; Prof. Phil Gressman</li>
+                    <li>MATH 6440 (PDE I) &ndash; Prof. Ryan Hynd</li>
+                    <li>MATH 6450 (PDE II) &ndash; Prof. Ryan Hynd</li>
+                    <li>MATH 6480 (Probability Theory) &ndash; Prof. Jiaoyang Huang</li>
+                    <li>MATH 6600 (Riemannian Geometry) &ndash; Prof. Wolfgang Ziller</li>
                 </ul>
                 <p class="course-level"><strong>Reading Projects and Seminars</strong></p>
                 <ul class="course-list">
-                    <li>Dynamical Systems - student-led seminar</li>
-                    <li>Functional Analysis - through directed reading program</li>
-                    <li>Symmetries of Root Systems - through Preliminary Arizona Winter School (PAWS)</li>
-                    <li>Homological Algebra - Prof. Ted Chinburg</li>
-                    <li>Algebraic K-Theory - Prof. Ted Chinburg</li>
-                    <li>Riemann Surfaces - Prof. Dennis DeTurck</li>
-                    <li>Lie Groups and Lie Algebras - Prof. Dennis DeTurck</li>
-                    <li>Applied Topology - Dr. Shreya Arya</li>
-                    <li>Riemannian Geometry - Prof. Dennis DeTurck</li>
-                    <li>Complex Manifolds - Prof. Dennis DeTurck</li>
-                    <li>Characteristic Classes - Prof. Dennis DeTurck</li>
+                    <li>Dynamical Systems &ndash; student-led seminar</li>
+                    <li>Functional Analysis &ndash; through directed reading program</li>
+                    <li>Symmetries of Root Systems &ndash; through Preliminary Arizona Winter School (PAWS)</li>
+                    <li>Homological Algebra &ndash; Prof. Ted Chinburg</li>
+                    <li>Algebraic K-Theory &ndash; Prof. Ted Chinburg</li>
+                    <li>Riemann Surfaces &ndash; Prof. Dennis DeTurck</li>
+                    <li>Lie Groups and Lie Algebras &ndash; Prof. Dennis DeTurck</li>
+                    <li>Applied Topology &ndash; Dr. Shreya Arya</li>
+                    <li>Riemannian Geometry &ndash; Prof. Dennis DeTurck</li>
+                    <li>Complex Manifolds &ndash; Prof. Dennis DeTurck</li>
+                    <li>Characteristic Classes &ndash; Prof. Dennis DeTurck</li>
                 </ul>
             </div>
         </div>
@@ -504,7 +547,7 @@
             <span class="footer-separator">|</span>
             <a href="https://linkedin.com/in/rishimd6" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <span class="footer-separator">|</span>
-            <a href="https://scholar.google.com/citations?user=3-hDiZ8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <a href="https://scholar.google.com/citations?user=3-hDiZ8AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
         </div>
     </footer>
 
