@@ -244,6 +244,139 @@
             text-decoration: underline;
         }
 
+        /* --- Clickable research cards --- */
+        .research-card {
+            cursor: pointer;
+        }
+
+        .materials-btn {
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: transparent;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 0.45rem 1rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .materials-btn:hover,
+        .materials-btn:focus-visible {
+            background-color: var(--accent);
+            color: #ffffff;
+        }
+
+        /* --- Materials popout (modal) --- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background-color: rgba(45, 38, 51, 0.55);
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        .modal-overlay[hidden] {
+            display: none;
+        }
+
+        .modal {
+            position: relative;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 20px 50px rgba(45, 38, 51, 0.3);
+            padding: 2rem 2rem 2.2rem;
+            width: 100%;
+            max-width: 460px;
+            animation: modalPop 0.22s ease-out;
+        }
+
+        @keyframes modalPop {
+            from { opacity: 0; transform: translateY(12px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .modal-title {
+            font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+            padding-right: 1.5rem;
+            line-height: 1.35;
+        }
+
+        .modal-sub {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.4rem;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .modal-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.9rem 1.1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-decoration: none;
+            transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        a.modal-option:hover,
+        a.modal-option:focus-visible {
+            border-color: var(--accent);
+            background-color: var(--image-bg);
+            transform: translateY(-2px);
+        }
+
+        .modal-option .opt-meta {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .modal-option.disabled {
+            color: var(--text-muted);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 0.7rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            font-size: 1.7rem;
+            line-height: 1;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.2rem;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus-visible {
+            color: var(--accent);
+        }
+
         /* --- Coursework / Teaching Grid --- */
         .course-level {
             font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -424,36 +557,21 @@
                 </div>
             </div>
 
-            <!-- Preprints Section -->
+            <!-- Research Section (cards open a materials popout) -->
             <div class="content full-width">
-                <h1>Preprints</h1>
+                <h1>Research</h1>
 
-                <div class="entry card">
+                <div class="entry card research-card" onclick="cardClick(event, 'planned-behavior')">
                     <h2>Classification of dynamics for a two person model of planned behavior</h2>
                     <p class="authors"><strong>Rishi Dadlani</strong>, John S. McAlister, Tahra L. Eissa, and Nina H. Fefferman</p>
-                    <p class="date">Preprint, 2026 &middot; math.DS <span class="res-links"><a href="https://arxiv.org/abs/2601.11804" target="_blank" rel="noopener noreferrer">[arXiv]</a></span></p>
+                    <p class="date">NSF APPEX &middot; supervised by <a href="https://search.asu.edu/profile/5533713" target="_blank" rel="noopener noreferrer">Prof. Nina Fefferman</a> &middot; Summer 2025</p>
+                    <button type="button" class="materials-btn" aria-haspopup="dialog" onclick="event.stopPropagation(); openModal('planned-behavior')">View materials</button>
                 </div>
 
-                <div class="entry card">
+                <div class="entry card research-card" onclick="cardClick(event, 'dlpp')">
                     <h2>Exponential DLPP Conditioned on Upper Deviation Event</h2>
-                    <p class="date">Preprint in preparation, 2026</p>
-                </div>
-            </div>
-
-            <!-- Bottom Section: Research Cards -->
-            <div class="content full-width">
-                <h1>Research Experiences</h1>
-                
-                <div class="entry card">
-                    <h2>Exponential DLPP Conditioned on Upper Deviation Event</h2>
-                    <p class="date">University of Michigan REU, Summer 2026</p>
-                    <p>Supervised by <a href="https://sites.lsa.umich.edu/baik/" target="_blank" rel="noopener noreferrer">Prof. Jinho Baik</a>.</p>
-                </div>
-
-                <div class="entry card">
-                    <h2>Dynamics of Collective Action</h2>
-                    <p class="date">NSF Center for Analysis and Prediction of Pandemic Expansion (APPEX), Summer 2025</p>
-                    <p>Supervised by <a href="https://search.asu.edu/profile/5533713" target="_blank" rel="noopener noreferrer">Prof. Nina Fefferman</a>.</p>
+                    <p class="date">University of Michigan REU &middot; supervised by <a href="https://sites.lsa.umich.edu/baik/" target="_blank" rel="noopener noreferrer">Prof. Jinho Baik</a> &middot; Summer 2026</p>
+                    <button type="button" class="materials-btn" aria-haspopup="dialog" onclick="event.stopPropagation(); openModal('dlpp')">View materials</button>
                 </div>
             </div>
 
@@ -478,7 +596,7 @@
 
                 <p class="course-level"><strong>Presentations</strong></p>
                 <ul class="course-list single-column">
-                    <li>Exponential DLPP Conditioned on Upper Large Deviation &ndash; Ohio State Young Mathematicians Conference (YMC) and University of Michigan REU (July 2026)</li><span class = "res-links"><a href="https://drive.google.com/file/d/1lCOKaERotNfQmPCmL3y4KxsUVw5Bx3ii/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
+                    <li>Exponential DLPP Conditioned on Upper Large Deviation &ndash; Ohio State Young Mathematicians Conference (YMC) and University of Michigan REU (July 2026) <span class="res-links"><a href="https://drive.google.com/file/d/1lCOKaERotNfQmPCmL3y4KxsUVw5Bx3ii/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
                     <li>Numerical Methods Applied to Radiation Transport Equation &ndash; Texas A&amp;M PDE Summer Program (May 2026) <span class="res-links"><a href="https://drive.google.com/file/d/1fcqzjCFWgBhYLkzvsBdh2CFWXDFU3pma/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a><a href="https://github.com/rishimd6/radiation-transport" target="_blank" rel="noopener noreferrer">[code]</a></span></li>
                     <li>Classification of Dynamics for a Model of Planned Behavior &ndash; Johns Hopkins MATRX (March 2026) <span class="res-links"><a href="https://drive.google.com/file/d/1q9VPLienLPUeJgJIJDFiOc8uFlONLwRJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
                     <li>Topological Mixing and Transitivity, Ergodicity, Circle Dynamics &ndash; Dynamical Systems Seminar, University of Pennsylvania (September&ndash;December 2024)</li>
@@ -540,6 +658,16 @@
         </div>
     </main>
 
+    <!-- Research materials popout -->
+    <div class="modal-overlay" id="modal-overlay" hidden>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button type="button" class="modal-close" aria-label="Close" onclick="closeModal()">&times;</button>
+            <h2 class="modal-title" id="modal-title"></h2>
+            <p class="modal-sub">Select what you'd like to view.</p>
+            <div class="modal-options" id="modal-options"></div>
+        </div>
+    </div>
+
     <!-- Sticky Footer -->
     <footer class="sticky-footer">
         <div class="footer-content">
@@ -551,7 +679,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Tabs -->
+    <!-- JavaScript for Tabs and Research popout -->
     <script>
         // --- Tab Switching Logic ---
         function openTab(evt, tabId) {
@@ -568,6 +696,64 @@
             evt.currentTarget.classList.add("active");
         }
 
+        // --- Research materials popout ---
+        const projectData = {
+            'planned-behavior': {
+                title: 'Classification of dynamics for a two person model of planned behavior',
+                preprint: 'https://arxiv.org/abs/2601.11804',
+                slides: 'https://drive.google.com/file/d/1q9VPLienLPUeJgJIJDFiOc8uFlONLwRJ/view?usp=sharing'
+            },
+            'dlpp': {
+                title: 'Exponential DLPP Conditioned on Upper Deviation Event',
+                preprint: null,
+                slides: 'https://drive.google.com/file/d/1lCOKaERotNfQmPCmL3y4KxsUVw5Bx3ii/view?usp=sharing'
+            }
+        };
+
+        let lastFocused = null;
+
+        function cardClick(event, key) {
+            // let real links inside the card work, and let the button handle its own click
+            if (event.target.closest('a') || event.target.closest('.materials-btn')) return;
+            openModal(key);
+        }
+
+        function optionMarkup(href, label, unavailableNote) {
+            if (href) {
+                return '<a class="modal-option" href="' + href + '" target="_blank" rel="noopener noreferrer">' +
+                    '<span>' + label + '</span><span class="opt-meta">open &#8599;</span></a>';
+            }
+            return '<div class="modal-option disabled" aria-disabled="true">' +
+                '<span>' + label + '</span><span class="opt-meta">' + unavailableNote + '</span></div>';
+        }
+
+        function openModal(key) {
+            const data = projectData[key];
+            if (!data) return;
+            lastFocused = document.activeElement;
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-options').innerHTML =
+                optionMarkup(data.preprint, 'Preprint', 'in preparation') +
+                optionMarkup(data.slides, 'Presentation', 'coming soon');
+            const overlay = document.getElementById('modal-overlay');
+            overlay.hidden = false;
+            document.body.style.overflow = 'hidden';
+            document.querySelector('.modal-close').focus();
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').hidden = true;
+            document.body.style.overflow = '';
+            if (lastFocused) lastFocused.focus();
+        }
+
+        // Close on backdrop click or Escape
+        document.addEventListener('click', function (e) {
+            if (e.target.id === 'modal-overlay') closeModal();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !document.getElementById('modal-overlay').hidden) closeModal();
+        });
     </script>
 </body>
 </html>
