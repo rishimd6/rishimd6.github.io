@@ -430,10 +430,11 @@
         font-size: 1.05rem;
         color: var(--accent);
         font-style: italic;
-        writing-mode: vertical-rl; /* Turns the text sideways */
+        writing-mode: vertical-rl; /* Tells the browser it's a vertical block */
+        text-orientation: upright; /* Keeps letters facing the normal reading direction */
         animation: bounce-float 2s infinite ease-in-out;
         opacity: 0.8;
-        letter-spacing: 0.5px;
+        letter-spacing: -2px; /* Pulls upright letters slightly closer together */
     }
 
     @keyframes bounce-float {
