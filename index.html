@@ -23,506 +23,544 @@
             --shadow: 0 4px 16px rgba(74, 43, 122, 0.08);
             --card-shadow: 0 2px 8px rgba(74, 43, 122, 0.05);
             --image-bg: #f4eee1;
-        }
+        }    
 
-        /* --- Base Reset & Typography --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* --- Base Reset & Typography --- */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        /* Accessible keyboard focus indicator */
-        a:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 3px;
-            border-radius: 2px;
-        }
+    /* Accessible keyboard focus indicator */
+    a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 2px;
+    }
 
-        body {
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.7;
-            padding-bottom: 4rem; 
-        }
+    body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        line-height: 1.7;
+        padding-bottom: 4rem; 
+    }
 
-        /* --- Navigation Bar --- */
-        .navbar {
-            background-color: var(--bg-nav);
-            box-shadow: 0 2px 4px rgba(74, 43, 122, 0.05);
-            border-bottom: 1px solid var(--border-color);
-            width: 100%;
-        }
+    /* --- Navigation Bar --- */
+    .navbar {
+        background-color: var(--bg-nav);
+        box-shadow: 0 2px 4px rgba(74, 43, 122, 0.05);
+        border-bottom: 1px solid var(--border-color);
+        width: 100%;
+    }
 
+    .nav-container {
+        max-width: 1050px;
+        margin: 0 auto;
+        padding: 1.2rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-brand {
+        font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: -0.5px;
+        white-space: nowrap;
+    }
+
+    .nav-container ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-left: auto;
+    }
+
+    .nav-container a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: color 0.2s ease, text-decoration 0.2s ease;
+    }
+
+    .nav-container a:hover {
+        color: var(--accent-hover);
+    }
+
+    .nav-container a.active {
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    /* --- Main Layout --- */
+    .container {
+        max-width: 1050px;
+        margin: 4rem auto;
+        padding: 0 2rem;
+    }
+
+    /* --- Tab Logic --- */
+    .tab-content {
+        display: none;
+        animation: fadeIn 0.4s ease-out;
+    }
+
+    .tab-content.active-tab {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* New structural class for the top part of the About page */
+    .about-hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5rem;
+        margin-bottom: 4rem; /* Adds space before Research section starts */
+    }
+
+    /* --- Content Styling --- */
+    .content {
+        flex: 1;
+        max-width: 600px;
+    }
+
+    .content.full-width {
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    /* Wider content for the list-heavy tabs so entries fit on one line */
+    #teaching .content.full-width,
+    #coursework .content.full-width {
+        max-width: none;
+    }
+
+    .content h1 {
+        font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        color: var(--accent);
+    }
+
+    .content.full-width h1 {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .content p {
+        margin-bottom: 1.2rem;
+        font-size: 1.05rem;
+        color: var(--text-muted);
+    }
+
+    /* Inline Content Links */
+    .content a {
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid var(--text-muted);
+        transition: border-bottom-color 0.2s ease, color 0.2s ease;
+    }
+
+    .content a:hover {
+        border-bottom-color: var(--accent);
+        color: var(--text-main);
+    }
+
+    /* --- Research Cards --- */
+    .entry.card {
+        background-color: var(--card-bg);
+        padding: 1.8rem 2rem;
+        border-radius: 12px;
+        border-left: 4px solid var(--accent);
+        box-shadow: var(--card-shadow);
+        margin-bottom: 2rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .entry.card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+    }
+
+    .entry h2 {
+        font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+        font-size: 1.35rem;
+        margin-bottom: 0.3rem;
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    .entry .date {
+        font-style: italic;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+        opacity: 0.8;
+    }
+
+    .entry p:last-child {
+        margin-bottom: 0;
+    }
+
+    .entry .authors {
+        color: var(--text-main);
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .res-links {
+        white-space: nowrap;
+    }
+
+    .content .res-links a {
+        font-size: 0.85rem;
+        font-weight: 500;
+        font-style: normal;
+        color: var(--accent);
+        border-bottom: none;
+        margin-left: 0.35rem;
+    }
+
+    .content .res-links a:hover {
+        color: var(--accent-hover);
+        border-bottom: none;
+        text-decoration: underline;
+    }
+
+    .research-card {
+        cursor: pointer;
+    }
+
+    .materials-btn {
+        font-family: inherit;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--accent);
+        background: transparent;
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        padding: 0.45rem 1rem;
+        margin-top: 1rem;
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .materials-btn:hover,
+    .materials-btn:focus-visible {
+        background-color: var(--accent);
+        color: #ffffff;
+    }
+
+    /* --- Materials popout (modal) --- */
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        background-color: rgba(45, 38, 51, 0.55);
+        animation: fadeIn 0.2s ease-out;
+    }
+
+    .modal-overlay[hidden] {
+        display: none;
+    }
+
+    .modal {
+        position: relative;
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        border-top: 4px solid var(--accent);
+        box-shadow: 0 20px 50px rgba(45, 38, 51, 0.3);
+        padding: 2rem 2rem 2.2rem;
+        width: 100%;
+        max-width: 460px;
+        animation: modalPop 0.22s ease-out;
+    }
+
+    @keyframes modalPop {
+        from { opacity: 0; transform: translateY(12px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-title {
+        font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 0.4rem;
+        padding-right: 1.5rem;
+        line-height: 1.35;
+    }
+
+    .modal-sub {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        margin-bottom: 1.4rem;
+    }
+
+    .modal-options {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .modal-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.9rem 1.1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--accent);
+        text-decoration: none;
+        transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    a.modal-option:hover,
+    a.modal-option:focus-visible {
+        border-color: var(--accent);
+        background-color: var(--image-bg);
+        transform: translateY(-2px);
+    }
+
+    .modal-option .opt-meta {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: var(--text-muted);
+    }
+
+    .modal-option.disabled {
+        color: var(--text-muted);
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 0.7rem;
+        right: 1rem;
+        background: transparent;
+        border: none;
+        font-size: 1.7rem;
+        line-height: 1;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: 0.2rem;
+        transition: color 0.2s ease;
+    }
+
+    .modal-close:hover,
+    .modal-close:focus-visible {
+        color: var(--accent);
+    }
+
+    /* --- Coursework / Teaching Grid --- */
+    #coursework {
+        position: relative; /* Anchor for the scroll indicator */
+    }
+
+    .course-level {
+        font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+        font-weight: 600;
+        color: var(--accent) !important;
+        margin-top: 2rem;
+        margin-bottom: 1rem !important;
+        font-size: 1.15rem;
+    }
+
+    .course-list {
+        list-style-type: none;
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem 2rem; 
+    }
+
+    .course-list.single-column {
+        grid-template-columns: 1fr;
+    }
+
+    .course-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+    }
+
+    .course-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--text-muted);
+    }
+
+    /* --- Cutesy Scroll Indicator --- */
+    .scroll-indicator-wrapper {
+        position: absolute;
+        top: 0;
+        right: -3.5rem; /* Pushes it out into the right margin */
+        bottom: 0; /* Spans the whole height of the section */
+        pointer-events: none; /* Allows clicking through it */
+    }
+
+    .scroll-indicator {
+        position: sticky;
+        top: 40vh; /* Keeps it in view as you scroll down the page */
+        font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+        font-size: 1.05rem;
+        color: var(--accent);
+        font-style: italic;
+        writing-mode: vertical-rl; /* Turns the text sideways */
+        animation: bounce-float 2s infinite ease-in-out;
+        opacity: 0.8;
+        letter-spacing: 0.5px;
+    }
+
+    @keyframes bounce-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(12px); }
+    }
+
+    /* --- Profile Image (Circular) --- */
+    .image-container {
+        flex: 0 0 320px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image-container img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid var(--border-color);
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .image-container img:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(74, 43, 122, 0.18);
+        border-color: var(--accent);
+    }
+
+    /* --- Footer Styling --- */
+    .sticky-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-nav);
+        border-top: 1px solid var(--border-color);
+        padding: 1rem 0;
+        text-align: center;
+        z-index: 1000;
+        box-shadow: 0 -2px 10px rgba(74, 43, 122, 0.05);
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .footer-content a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+    }
+
+    .footer-content a:hover {
+        color: var(--accent);
+    }
+
+    .footer-separator {
+        color: var(--text-muted);
+        opacity: 0.5;
+    }
+
+    /* --- Mobile Responsiveness --- */
+    @media (max-width: 1150px) {
+        .scroll-indicator-wrapper {
+            right: -1.5rem; /* Tuck it in slightly on medium screens */
+        }
+    }
+
+    @media (max-width: 900px) {
         .nav-container {
-            max-width: 1050px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-brand {
-            font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: -0.5px;
-            white-space: nowrap;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 1.5rem;
         }
 
         .nav-container ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-left: auto;
-        }
-
-        .nav-container a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: color 0.2s ease, text-decoration 0.2s ease;
-        }
-
-        .nav-container a:hover {
-            color: var(--accent-hover);
-        }
-
-        .nav-container a.active {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        /* --- Main Layout --- */
-        .container {
-            max-width: 1050px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        /* --- Tab Logic --- */
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        .tab-content.active-tab {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* New structural class for the top part of the About page */
-        .about-hero {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 5rem;
-            margin-bottom: 4rem; /* Adds space before Research section starts */
-        }
-
-        /* --- Content Styling --- */
-        .content {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .content.full-width {
-            max-width: 850px;
-            margin: 0 auto;
-        }
-
-        /* Wider content for the list-heavy tabs so entries fit on one line */
-        #teaching .content.full-width,
-        #coursework .content.full-width {
-            max-width: none;
-        }
-
-        .content h1 {
-            font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--accent);
-        }
-
-        .content.full-width h1 {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.8rem;
-            margin-bottom: 2rem;
-        }
-
-        .content p {
-            margin-bottom: 1.2rem;
-            font-size: 1.05rem;
-            color: var(--text-muted);
-        }
-
-        /* Inline Content Links */
-        .content a {
-            color: var(--accent);
-            text-decoration: none;
-            border-bottom: 1px solid var(--text-muted);
-            transition: border-bottom-color 0.2s ease, color 0.2s ease;
-        }
-
-        .content a:hover {
-            border-bottom-color: var(--accent);
-            color: var(--text-main);
-        }
-
-        /* --- Research Cards --- */
-        .entry.card {
-            background-color: var(--card-bg);
-            padding: 1.8rem 2rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent);
-            box-shadow: var(--card-shadow);
-            margin-bottom: 2rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .entry.card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        .entry h2 {
-            font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
-            font-size: 1.35rem;
-            margin-bottom: 0.3rem;
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .entry .date {
-            font-style: italic;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-            opacity: 0.8;
-        }
-
-        .entry p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Author line on preprint cards */
-        .entry .authors {
-            color: var(--text-main);
-            font-size: 1rem;
-            margin-bottom: 0.4rem;
-        }
-
-        /* Resource tag links ([arXiv], [slides], [code]) */
-        .res-links {
-            white-space: nowrap;
-        }
-
-        .content .res-links a {
-            font-size: 0.85rem;
-            font-weight: 500;
-            font-style: normal;
-            color: var(--accent);
-            border-bottom: none;
-            margin-left: 0.35rem;
-        }
-
-        .content .res-links a:hover {
-            color: var(--accent-hover);
-            border-bottom: none;
-            text-decoration: underline;
-        }
-
-        /* --- Clickable research cards --- */
-        .research-card {
-            cursor: pointer;
-        }
-
-        .materials-btn {
-            font-family: inherit;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--accent);
-            background: transparent;
-            border: 1px solid var(--accent);
-            border-radius: 8px;
-            padding: 0.45rem 1rem;
-            margin-top: 1rem;
-            cursor: pointer;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        .materials-btn:hover,
-        .materials-btn:focus-visible {
-            background-color: var(--accent);
-            color: #ffffff;
-        }
-
-        /* --- Materials popout (modal) --- */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 2000;
-            display: flex;
-            align-items: center;
+            margin-left: 0;
             justify-content: center;
-            padding: 1.5rem;
-            background-color: rgba(45, 38, 51, 0.55);
-            animation: fadeIn 0.2s ease-out;
+            gap: 1.2rem;
         }
 
-        .modal-overlay[hidden] {
-            display: none;
+        .about-hero {
+            flex-direction: column-reverse;
+            text-align: center;
+            margin: 2rem auto 4rem auto;
+            gap: 3rem;
         }
 
-        .modal {
-            position: relative;
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            border-top: 4px solid var(--accent);
-            box-shadow: 0 20px 50px rgba(45, 38, 51, 0.3);
-            padding: 2rem 2rem 2.2rem;
-            width: 100%;
-            max-width: 460px;
-            animation: modalPop 0.22s ease-out;
+        .content {
+            max-width: 100%;
         }
 
-        @keyframes modalPop {
-            from { opacity: 0; transform: translateY(12px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+        .image-container img {
+            width: 250px;
+            height: 250px;
         }
-
-        .modal-title {
-            font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 0.4rem;
-            padding-right: 1.5rem;
-            line-height: 1.35;
-        }
-
-        .modal-sub {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 1.4rem;
-        }
-
-        .modal-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .modal-option {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.9rem 1.1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--accent);
-            text-decoration: none;
-            transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
-        }
-
-        a.modal-option:hover,
-        a.modal-option:focus-visible {
-            border-color: var(--accent);
-            background-color: var(--image-bg);
-            transform: translateY(-2px);
-        }
-
-        .modal-option .opt-meta {
-            font-size: 0.8rem;
-            font-weight: 400;
-            color: var(--text-muted);
-        }
-
-        .modal-option.disabled {
-            color: var(--text-muted);
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 0.7rem;
-            right: 1rem;
-            background: transparent;
-            border: none;
-            font-size: 1.7rem;
-            line-height: 1;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 0.2rem;
-            transition: color 0.2s ease;
-        }
-
-        .modal-close:hover,
-        .modal-close:focus-visible {
-            color: var(--accent);
-        }
-
-        /* --- Coursework / Teaching Grid --- */
-        .course-level {
-            font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
-            font-weight: 600;
-            color: var(--accent) !important;
-            margin-top: 2rem;
-            margin-bottom: 1rem !important;
-            font-size: 1.15rem;
-        }
-
+        
         .course-list {
-            list-style-type: none;
-            padding-left: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.8rem 2rem; 
-        }
-
-        /* Modification to allow single-column lists for Talks */
-        .course-list.single-column {
             grid-template-columns: 1fr;
         }
 
         .course-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .course-list li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: var(--text-muted);
-        }
-
-        /* --- Profile Image (Circular) --- */
-        .image-container {
-            flex: 0 0 320px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .image-container img {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid var(--border-color);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        .image-container img:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(74, 43, 122, 0.18);
-            border-color: var(--accent);
-        }
-
-        /* --- Footer Styling --- */
-        .sticky-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--bg-nav);
-            border-top: 1px solid var(--border-color);
-            padding: 1rem 0;
-            text-align: center;
-            z-index: 1000;
-            box-shadow: 0 -2px 10px rgba(74, 43, 122, 0.05);
+            text-align: left;
         }
 
         .footer-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .footer-content a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
-
-        .footer-content a:hover {
-            color: var(--accent);
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .footer-separator {
-            color: var(--text-muted);
-            opacity: 0.5;
+            display: none; 
         }
 
-        /* --- Mobile Responsiveness --- */
-        @media (max-width: 900px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1.5rem;
-                padding: 1.5rem;
-            }
-
-            .nav-container ul {
-                margin-left: 0;
-                justify-content: center;
-                gap: 1.2rem;
-            }
-
-            .about-hero {
-                flex-direction: column-reverse;
-                text-align: center;
-                margin: 2rem auto 4rem auto;
-                gap: 3rem;
-            }
-
-            .content {
-                max-width: 100%;
-            }
-
-            .image-container img {
-                width: 250px;
-                height: 250px;
-            }
-            
-            .course-list {
-                grid-template-columns: 1fr;
-            }
-
-            .course-list li {
-                text-align: left;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .footer-separator {
-                display: none; 
-            }
+        .scroll-indicator-wrapper {
+            display: none; /* Hide on mobile to avoid horizontal scrolling/clutter */
         }
-    </style>
+    }
+</style>
+
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -538,221 +576,227 @@
         </div>
     </nav>
 
-    <!-- Main Content Container -->
-    <main class="container">
+<!-- Main Content Container -->
+<main class="container">
+    
+    <!-- ABOUT & RESEARCH TAB (Merged) -->
+    <div id="about" class="tab-content active-tab">
         
-        <!-- ABOUT & RESEARCH TAB (Merged) -->
-        <div id="about" class="tab-content active-tab">
+        <!-- Top Section: Bio & Image -->
+        <div class="about-hero">
+            <div class="content">
+                <p>Hello! My name is Rishi (he/him). I'm a senior at the University of Pennsylvania studying mathematics under the supervision of <a href="https://www2.math.upenn.edu/~deturck/" target="_blank" rel="noopener noreferrer">Prof. Dennis DeTurck</a>.</p>
+                <p>I am currently applying to PhD programs, with a primary focus on differential geometry, though I am also interested in probability theory.</p>
+                <p>Aside from math, I also enjoy lifting and playing the flute; I am currently working on Prokofiev's Sonata in D Major.</p>
+            </div>
             
-            <!-- Top Section: Bio & Image -->
-            <div class="about-hero">
-                <div class="content">
-                    <p>Hello! My name is Rishi (he/him). I'm a senior at the University of Pennsylvania studying mathematics under the supervision of <a href="https://www2.math.upenn.edu/~deturck/" target="_blank" rel="noopener noreferrer">Prof. Dennis DeTurck</a>.</p>
-                    <p>I am currently applying to PhD programs, with a primary focus on differential geometry, though I am also interested in probability theory.</p>
-                    <p>Aside from math, I also enjoy lifting and playing the flute; I am currently working on Prokofiev's Sonata in D Major.</p>
-                </div>
-                
-                <div class="image-container">
-                    <img src="image.png" alt="Rishi Dadlani">
-                </div>
-            </div>
-
-            <!-- Research Section (cards open a materials popout) -->
-            <div class="content full-width">
-                <h1>Research</h1>
-
-                <div class="entry card research-card" onclick="cardClick(event, 'planned-behavior')">
-                    <h2>Classification of dynamics for a two person model of planned behavior</h2>
-                    <p class="authors"><strong>Rishi Dadlani</strong>, John S. McAlister, Tahra L. Eissa, and Nina H. Fefferman</p>
-                    <p class="date">NSF APPEX &middot; supervised by <a href="https://search.asu.edu/profile/5533713" target="_blank" rel="noopener noreferrer">Prof. Nina Fefferman</a> &middot; Summer 2025</p>
-                    <button type="button" class="materials-btn" aria-haspopup="dialog" onclick="event.stopPropagation(); openModal('planned-behavior')">View materials</button>
-                </div>
-
-                <div class="entry card research-card" onclick="cardClick(event, 'dlpp')">
-                    <h2>Exponential DLPP Conditioned on Upper Deviation Event</h2>
-                    <p class="date">University of Michigan REU &middot; supervised by <a href="https://sites.lsa.umich.edu/baik/" target="_blank" rel="noopener noreferrer">Prof. Jinho Baik</a> &middot; Summer 2026</p>
-                    <button type="button" class="materials-btn" aria-haspopup="dialog" onclick="event.stopPropagation(); openModal('dlpp')">View materials</button>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- TEACHING & TALKS TAB -->
-        <div id="teaching" class="tab-content">
-            <div class="content full-width">
-                <h1>Teaching and Talks</h1>
-                
-                <p class="course-level"><strong>Teaching Assistantships</strong></p>
-                <ul class="course-list single-column">
-                    <li>EAS 5160 (Math for Machine Learning: Probability) &ndash; University of Pennsylvania (Spring&ndash;Fall 2026)</li>
-                    <li>EAS 5170 (Math for Machine Learning: Linear Algebra) &ndash; University of Pennsylvania (Spring&ndash;Fall 2026)</li>
-                    <li>ESE 3010 (Engineering Probability) &ndash; University of Pennsylvania (Spring 2026)</li>
-                </ul>
-
-                <p class="course-level"><strong>Course Developer</strong></p>
-                <ul class="course-list single-column">
-                    <li>EAS 5170 (Math for Machine Learning: Linear Algebra) &ndash; University of Pennsylvania (Fall 2025)</li>
-                </ul>
-
-                <p class="course-level"><strong>Presentations</strong></p>
-                <ul class="course-list single-column">
-                    <li>Exponential DLPP Conditioned on Upper Large Deviation &ndash; Ohio State Young Mathematicians Conference (YMC) and University of Michigan REU (July 2026) <span class="res-links"><a href="https://drive.google.com/file/d/1lCOKaERotNfQmPCmL3y4KxsUVw5Bx3ii/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
-                    <li>Numerical Methods Applied to Radiation Transport Equation &ndash; Texas A&amp;M PDE Summer Program (May 2026) <span class="res-links"><a href="https://drive.google.com/file/d/1fcqzjCFWgBhYLkzvsBdh2CFWXDFU3pma/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a><a href="https://github.com/rishimd6/radiation-transport" target="_blank" rel="noopener noreferrer">[code]</a></span></li>
-                    <li>Classification of Dynamics for a Model of Planned Behavior &ndash; Johns Hopkins MATRX (March 2026) <span class="res-links"><a href="https://drive.google.com/file/d/1q9VPLienLPUeJgJIJDFiOc8uFlONLwRJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
-                    <li>Topological Mixing and Transitivity, Ergodicity, Circle Dynamics &ndash; Dynamical Systems Seminar, University of Pennsylvania (September&ndash;December 2024)</li>
-                    <li>Functional Analysis &ndash; Directed Reading Program (December 2024) <span class="res-links"><a href="https://drive.google.com/file/d/1viTZOhXHL_bdoc10wyKhaGE-bHNaCKEb/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
-                    <li>Lie Groups and Lie Algebras &ndash; Differential Geometry Course Final Presentation (May 2024) <span class="res-links"><a href="https://drive.google.com/file/d/1vP28z8sLhl7MYn4-n-0BP3TtZ6X1e6pJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
-                </ul>
+            <div class="image-container">
+                <img src="image.png" alt="Rishi Dadlani">
             </div>
         </div>
 
-        <!-- COURSEWORK TAB -->
-        <div id="coursework" class="tab-content">
-            <div class="content full-width">
-                <h1>Selected Coursework</h1>
-                
-                <p class="course-level"><strong>Undergraduate Level</strong></p>
-                <ul class="course-list">
-                    <li>MATH 3140 (Advanced Linear Algebra) &ndash; Prof. Angela Gibney</li>
-                    <li>MATH 4100 (Complex Analysis) &ndash; Prof. Jim Haglund</li>
-                    <li>CIS 1600 (Combinatorics and Graph Theory) &ndash; Prof. Rajiv Gandhi</li>
-                    <li>CIS 1210 (Data Structures and Algorithms) &ndash; Prof. Rajiv Gandhi</li>
-                    <li>CIS 2620 (Automata and Complexity Theory) &ndash; Prof. Rajeev Alur</li>
-                    <li>ESE 3010 (Probability and Statistics) &ndash; Prof. Santosh Venkatesh</li>
-                </ul>    
-                
-                <p class="course-level"><strong>Master's Level</strong></p>
-                <ul class="course-list">
-                    <li>MATH 5000 (Point-Set Topology) &ndash; Prof. Dennis DeTurck</li>
-                    <li>MATH 5010 (Differential Geometry) &ndash; Prof. Dennis DeTurck</li>
-                    <li>MATH 5020 (Group Theory and Ring Theory) &ndash; Prof. Ted Chinburg</li>
-                    <li>MATH 5030 (Modules, Fields, Galois Theory) &ndash; Prof. Ted Chinburg</li>
-                </ul>
-                
-                <p class="course-level"><strong>PhD Level</strong></p>
-                <ul class="course-list">
-                    <li>MATH 6000 (Smooth Manifolds) &ndash; Prof. Herman Gluck</li>
-                    <li>MATH 6010 (Algebraic Topology) &ndash; Prof. Wolfgang Ziller</li>
-                    <li>MATH 6080 (Measure Theory and Complex Analysis) &ndash; Prof. Ryan Hynd</li>
-                    <li>MATH 6090 (Measure Theory and Functional Analysis) &ndash; Prof. Phil Gressman</li>
-                    <li>MATH 6440 (PDE I) &ndash; Prof. Ryan Hynd</li>
-                    <li>MATH 6450 (PDE II) &ndash; Prof. Ryan Hynd</li>
-                    <li>MATH 6480 (Probability Theory) &ndash; Prof. Jiaoyang Huang</li>
-                    <li>MATH 6600 (Riemannian Geometry) &ndash; Prof. Wolfgang Ziller</li>
-                </ul>
-                <p class="course-level"><strong>Reading Projects and Seminars</strong></p>
-                <ul class="course-list">
-                    <li>Dynamical Systems &ndash; student-led seminar</li>
-                    <li>Functional Analysis &ndash; through directed reading program</li>
-                    <li>Symmetries of Root Systems &ndash; through Preliminary Arizona Winter School (PAWS)</li>
-                    <li>Algebraic K-Theory &ndash; Prof. Ted Chinburg</li>
-                    <li>Riemann Surfaces &ndash; Prof. Dennis DeTurck</li>
-                    <li>Lie Groups and Lie Algebras &ndash; Prof. Dennis DeTurck</li>
-                    <li>Applied Topology &ndash; Dr. Shreya Arya</li>
-                    <li>Riemannian Geometry &ndash; Prof. Dennis DeTurck</li>
-                    <li>Complex Manifolds &ndash; Prof. Dennis DeTurck</li>
-                    <li>Characteristic Classes &ndash; Prof. Dennis DeTurck</li>
-                </ul>
+        <!-- Research Section (cards open a materials popout) -->
+        <div class="content full-width">
+            <h1>Research</h1>
+
+            <div class="entry card research-card" onclick="cardClick(event, 'planned-behavior')">
+                <h2>Classification of dynamics for a two person model of planned behavior</h2>
+                <p class="authors"><strong>Rishi Dadlani</strong>, John S. McAlister, Tahra L. Eissa, and Nina H. Fefferman</p>
+                <p class="date">NSF APPEX &middot; supervised by <a href="https://search.asu.edu/profile/5533713" target="_blank" rel="noopener noreferrer">Prof. Nina Fefferman</a> &middot; Summer 2025</p>
+                <button type="button" class="materials-btn" aria-haspopup="dialog" onclick="event.stopPropagation(); openModal('planned-behavior')">View materials</button>
+            </div>
+
+            <div class="entry card research-card" onclick="cardClick(event, 'dlpp')">
+                <h2>Exponential DLPP Conditioned on Upper Deviation Event</h2>
+                <p class="date">University of Michigan REU &middot; supervised by <a href="https://sites.lsa.umich.edu/baik/" target="_blank" rel="noopener noreferrer">Prof. Jinho Baik</a> &middot; Summer 2026</p>
+                <button type="button" class="materials-btn" aria-haspopup="dialog" onclick="event.stopPropagation(); openModal('dlpp')">View materials</button>
             </div>
         </div>
-    </main>
 
-    <!-- Research materials popout -->
-    <div class="modal-overlay" id="modal-overlay" hidden>
-        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-            <button type="button" class="modal-close" aria-label="Close" onclick="closeModal()">&times;</button>
-            <h2 class="modal-title" id="modal-title"></h2>
-            <p class="modal-sub">Select what you'd like to view.</p>
-            <div class="modal-options" id="modal-options"></div>
+    </div>
+
+    <!-- TEACHING & TALKS TAB -->
+    <div id="teaching" class="tab-content">
+        <div class="content full-width">
+            <h1>Teaching and Talks</h1>
+            
+            <p class="course-level"><strong>Teaching Assistantships</strong></p>
+            <ul class="course-list single-column">
+                <li>EAS 5160 (Math for Machine Learning: Probability) &ndash; University of Pennsylvania (Spring&ndash;Fall 2026)</li>
+                <li>EAS 5170 (Math for Machine Learning: Linear Algebra) &ndash; University of Pennsylvania (Spring&ndash;Fall 2026)</li>
+                <li>ESE 3010 (Engineering Probability) &ndash; University of Pennsylvania (Spring 2026)</li>
+            </ul>
+
+            <p class="course-level"><strong>Course Developer</strong></p>
+            <ul class="course-list single-column">
+                <li>EAS 5170 (Math for Machine Learning: Linear Algebra) &ndash; University of Pennsylvania (Fall 2025)</li>
+            </ul>
+
+            <p class="course-level"><strong>Presentations</strong></p>
+            <ul class="course-list single-column">
+                <li>Exponential DLPP Conditioned on Upper Large Deviation &ndash; Ohio State Young Mathematicians Conference (YMC) and University of Michigan REU (July 2026) <span class="res-links"><a href="https://drive.google.com/file/d/1lCOKaERotNfQmPCmL3y4KxsUVw5Bx3ii/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
+                <li>Numerical Methods Applied to Radiation Transport Equation &ndash; Texas A&amp;M PDE Summer Program (May 2026) <span class="res-links"><a href="https://drive.google.com/file/d/1fcqzjCFWgBhYLkzvsBdh2CFWXDFU3pma/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a><a href="https://github.com/rishimd6/radiation-transport" target="_blank" rel="noopener noreferrer">[code]</a></span></li>
+                <li>Classification of Dynamics for a Model of Planned Behavior &ndash; Johns Hopkins MATRX (March 2026) <span class="res-links"><a href="https://drive.google.com/file/d/1q9VPLienLPUeJgJIJDFiOc8uFlONLwRJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
+                <li>Topological Mixing and Transitivity, Ergodicity, Circle Dynamics &ndash; Dynamical Systems Seminar, University of Pennsylvania (September&ndash;December 2024)</li>
+                <li>Functional Analysis &ndash; Directed Reading Program (December 2024) <span class="res-links"><a href="https://drive.google.com/file/d/1viTZOhXHL_bdoc10wyKhaGE-bHNaCKEb/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
+                <li>Lie Groups and Lie Algebras &ndash; Differential Geometry Course Final Presentation (May 2024) <span class="res-links"><a href="https://drive.google.com/file/d/1vP28z8sLhl7MYn4-n-0BP3TtZ6X1e6pJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">[slides]</a></span></li>
+            </ul>
         </div>
     </div>
 
-    <!-- Sticky Footer -->
-    <footer class="sticky-footer">
-        <div class="footer-content">
-            <a href="mailto:rdadlani@sas.upenn.edu">rdadlani@sas.upenn.edu</a>
-            <span class="footer-separator">|</span>
-            <a href="https://linkedin.com/in/rishimd6" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <span class="footer-separator">|</span>
-            <a href="https://scholar.google.com/citations?user=3-hDiZ8AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+    <!-- COURSEWORK TAB -->
+    <div id="coursework" class="tab-content">
+        <!-- Floating scroll indicator -->
+        <div class="scroll-indicator-wrapper">
+            <div class="scroll-indicator">scroll! &darr;</div>
         </div>
-    </footer>
 
-    <!-- JavaScript for Tabs and Research popout -->
-    <script>
-        // --- Tab Switching Logic ---
-        function openTab(evt, tabId) {
-            evt.preventDefault();
-            const tabContents = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove("active-tab");
-            }
-            const tabLinks = document.getElementsByClassName("tab-link");
-            for (let i = 0; i < tabLinks.length; i++) {
-                tabLinks[i].classList.remove("active");
-            }
-            document.getElementById(tabId).classList.add("active-tab");
-            evt.currentTarget.classList.add("active");
+        <div class="content full-width">
+            <h1>Selected Coursework</h1>
+            
+            <p class="course-level"><strong>Undergraduate Level</strong></p>
+            <ul class="course-list">
+                <li>MATH 3140 (Advanced Linear Algebra) &ndash; Prof. Angela Gibney</li>
+                <li>MATH 4100 (Complex Analysis) &ndash; Prof. Jim Haglund</li>
+                <li>CIS 1600 (Combinatorics and Graph Theory) &ndash; Prof. Rajiv Gandhi</li>
+                <li>CIS 1210 (Data Structures and Algorithms) &ndash; Prof. Rajiv Gandhi</li>
+                <li>CIS 2620 (Automata and Complexity Theory) &ndash; Prof. Rajeev Alur</li>
+                <li>ESE 3010 (Probability and Statistics) &ndash; Prof. Santosh Venkatesh</li>
+            </ul>    
+            
+            <p class="course-level"><strong>Master's Level</strong></p>
+            <ul class="course-list">
+                <li>MATH 5000 (Point-Set Topology) &ndash; Prof. Dennis DeTurck</li>
+                <li>MATH 5010 (Differential Geometry) &ndash; Prof. Dennis DeTurck</li>
+                <li>MATH 5020 (Group Theory and Ring Theory) &ndash; Prof. Ted Chinburg</li>
+                <li>MATH 5030 (Modules, Fields, Galois Theory) &ndash; Prof. Ted Chinburg</li>
+            </ul>
+            
+            <p class="course-level"><strong>PhD Level</strong></p>
+            <ul class="course-list">
+                <li>MATH 6000 (Smooth Manifolds) &ndash; Prof. Herman Gluck</li>
+                <li>MATH 6010 (Algebraic Topology) &ndash; Prof. Wolfgang Ziller</li>
+                <li>MATH 6080 (Measure Theory and Complex Analysis) &ndash; Prof. Ryan Hynd</li>
+                <li>MATH 6090 (Measure Theory and Functional Analysis) &ndash; Prof. Phil Gressman</li>
+                <li>MATH 6440 (PDE I) &ndash; Prof. Ryan Hynd</li>
+                <li>MATH 6450 (PDE II) &ndash; Prof. Ryan Hynd</li>
+                <li>MATH 6480 (Probability Theory) &ndash; Prof. Jiaoyang Huang</li>
+                <li>MATH 6600 (Riemannian Geometry) &ndash; Prof. Wolfgang Ziller</li>
+            </ul>
+            <p class="course-level"><strong>Reading Projects and Seminars</strong></p>
+            <ul class="course-list">
+                <li>Dynamical Systems &ndash; student-led seminar</li>
+                <li>Functional Analysis &ndash; through directed reading program</li>
+                <li>Symmetries of Root Systems &ndash; through Preliminary Arizona Winter School (PAWS)</li>
+                <li>Algebraic K-Theory &ndash; Prof. Ted Chinburg</li>
+                <li>Riemann Surfaces &ndash; Prof. Dennis DeTurck</li>
+                <li>Lie Groups and Lie Algebras &ndash; Prof. Dennis DeTurck</li>
+                <li>Applied Topology &ndash; Dr. Shreya Arya</li>
+                <li>Riemannian Geometry &ndash; Prof. Dennis DeTurck</li>
+                <li>Complex Manifolds &ndash; Prof. Dennis DeTurck</li>
+                <li>Characteristic Classes &ndash; Prof. Dennis DeTurck</li>
+            </ul>
+        </div>
+    </div>
+</main>
+
+<!-- Research materials popout -->
+<div class="modal-overlay" id="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button type="button" class="modal-close" aria-label="Close" onclick="closeModal()">&times;</button>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-sub">Select what you'd like to view.</p>
+        <div class="modal-options" id="modal-options"></div>
+    </div>
+</div>
+
+<!-- Sticky Footer -->
+<footer class="sticky-footer">
+    <div class="footer-content">
+        <a href="mailto:rdadlani@sas.upenn.edu">rdadlani@sas.upenn.edu</a>
+        <span class="footer-separator">|</span>
+        <a href="https://linkedin.com/in/rishimd6" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="footer-separator">|</span>
+        <a href="https://scholar.google.com/citations?user=3-hDiZ8AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+    </div>
+</footer>
+
+<!-- JavaScript for Tabs and Research popout -->
+<script>
+    // --- Tab Switching Logic ---
+    function openTab(evt, tabId) {
+        evt.preventDefault();
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove("active-tab");
         }
-
-        // --- Research materials popout ---
-        const projectData = {
-            'planned-behavior': {
-                title: 'Classification of dynamics for a two person model of planned behavior',
-                preprint: 'https://arxiv.org/abs/2601.11804',
-                slides: 'https://drive.google.com/file/d/1q9VPLienLPUeJgJIJDFiOc8uFlONLwRJ/view?usp=sharing'
-            },
-            'dlpp': {
-                title: 'Exponential DLPP Conditioned on Upper Deviation Event',
-                preprint: null,
-                slides: 'https://drive.google.com/file/d/1lCOKaERotNfQmPCmL3y4KxsUVw5Bx3ii/view?usp=sharing'
-            }
-        };
-
-        let lastFocused = null;
-
-        function cardClick(event, key) {
-            // let real links inside the card work, and let the button handle its own click
-            if (event.target.closest('a') || event.target.closest('.materials-btn')) return;
-            openModal(key);
+        const tabLinks = document.getElementsByClassName("tab-link");
+        for (let i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].classList.remove("active");
         }
+        document.getElementById(tabId).classList.add("active-tab");
+        evt.currentTarget.classList.add("active");
+    }
 
-        function optionMarkup(href, label, unavailableNote) {
-            if (href) {
-                return '<a class="modal-option" href="' + href + '" target="_blank" rel="noopener noreferrer">' +
-                    '<span>' + label + '</span><span class="opt-meta">open &#8599;</span></a>';
-            }
-            return '<div class="modal-option disabled" aria-disabled="true">' +
-                '<span>' + label + '</span><span class="opt-meta">' + unavailableNote + '</span></div>';
+    // --- Research materials popout ---
+    const projectData = {
+        'planned-behavior': {
+            title: 'Classification of dynamics for a two person model of planned behavior',
+            preprint: 'https://arxiv.org/abs/2601.11804',
+            slides: 'https://drive.google.com/file/d/1q9VPLienLPUeJgJIJDFiOc8uFlONLwRJ/view?usp=sharing'
+        },
+        'dlpp': {
+            title: 'Exponential DLPP Conditioned on Upper Deviation Event',
+            preprint: null,
+            slides: 'https://drive.google.com/file/d/1lCOKaERotNfQmPCmL3y4KxsUVw5Bx3ii/view?usp=sharing'
         }
+    };
 
-        function openModal(key) {
-            const data = projectData[key];
-            if (!data) return;
-            lastFocused = document.activeElement;
-            document.getElementById('modal-title').textContent = data.title;
-            document.getElementById('modal-options').innerHTML =
-                optionMarkup(data.preprint, 'Preprint', 'in preparation') +
-                optionMarkup(data.slides, 'Presentation', 'coming soon');
-            const overlay = document.getElementById('modal-overlay');
-            overlay.hidden = false;
-            document.body.style.overflow = 'hidden';
-            document.querySelector('.modal-close').focus();
+    let lastFocused = null;
+
+    function cardClick(event, key) {
+        // let real links inside the card work, and let the button handle its own click
+        if (event.target.closest('a') || event.target.closest('.materials-btn')) return;
+        openModal(key);
+    }
+
+    function optionMarkup(href, label, unavailableNote) {
+        if (href) {
+            return '<a class="modal-option" href="' + href + '" target="_blank" rel="noopener noreferrer">' +
+                '<span>' + label + '</span><span class="opt-meta">open &#8599;</span></a>';
         }
+        return '<div class="modal-option disabled" aria-disabled="true">' +
+            '<span>' + label + '</span><span class="opt-meta">' + unavailableNote + '</span></div>';
+    }
 
-        function closeModal() {
-            document.getElementById('modal-overlay').hidden = true;
-            document.body.style.overflow = '';
-            if (lastFocused) lastFocused.focus();
-        }
+    function openModal(key) {
+        const data = projectData[key];
+        if (!data) return;
+        lastFocused = document.activeElement;
+        document.getElementById('modal-title').textContent = data.title;
+        document.getElementById('modal-options').innerHTML =
+            optionMarkup(data.preprint, 'Preprint', 'in preparation') +
+            optionMarkup(data.slides, 'Presentation', 'coming soon');
+        const overlay = document.getElementById('modal-overlay');
+        overlay.hidden = false;
+        document.body.style.overflow = 'hidden';
+        document.querySelector('.modal-close').focus();
+    }
 
-        // Close on backdrop click or Escape
-        document.addEventListener('click', function (e) {
-            if (e.target.id === 'modal-overlay') closeModal();
-        });
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && !document.getElementById('modal-overlay').hidden) closeModal();
-        });
-    </script>
+    function closeModal() {
+        document.getElementById('modal-overlay').hidden = true;
+        document.body.style.overflow = '';
+        if (lastFocused) lastFocused.focus();
+    }
+
+    // Close on backdrop click or Escape
+    document.addEventListener('click', function (e) {
+        if (e.target.id === 'modal-overlay') closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !document.getElementById('modal-overlay').hidden) closeModal();
+    });
+</script>
+
 </body>
 </html>
